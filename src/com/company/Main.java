@@ -30,10 +30,10 @@ public class Main {
                 .filter(i -> i.getRof() < 200)
                 .map(i -> i.getName())
                 .collect(Collectors.toList());
-        var highestDamage = weaponList.stream() // TODO
-                .map(i -> i.getDamage())
-                .sorted()
+        var highestDamage = weaponList.stream()
+                .sorted((o1, o2) -> o2.getDamage() - o1.getDamage())
                 .limit(4)
+                .map(i -> i.getName() + "(" + i.getDamage() + ")")
                 .collect(Collectors.toList());
         System.out.println(averageCost);
         System.out.println(rof);
